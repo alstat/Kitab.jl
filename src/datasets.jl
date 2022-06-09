@@ -1,3 +1,4 @@
+using DataFrames
 const OPENITI_DB = joinpath(@__DIR__, "../db")
 
 mutable struct OpenITIDB
@@ -6,7 +7,9 @@ mutable struct OpenITIDB
 end
 
 function OpenITIDB(url::String) 
-    mkdir(OPENITI_DB)
+    try
+        mkdir(OPENITI_DB)
+    catch end
     return OpenITIDB(url, OPENITI_DB)
 end
 
@@ -19,14 +22,14 @@ end
 function Base.download(openiti::OpenITIDB)
     url_parts = split(openiti.url, "/")
     ah_folder = joinpath(OPENITI_DB, url_parts[5])
-    mkdir(ah_folder)
-    mkdir(joinpath(ah_folder, "data"))
+    try mkdir(ah_folder) catch end
+    try mkdir(joinpath(ah_folder, "data")) catch end
     
     author_folder = joinpath(ah_folder, "data", url_parts[8])
-    mkdir(author_folder)
+    try mkdir(author_folder) catch end
 
     book_folder = joinpath(author_folder, url_parts[9])
-    mkdir(book_folder)
+    try mkdir(book_folder) catch end
 
     file = joinpath(book_folder, string(url_parts[10], ".txt"))
 
@@ -37,50 +40,53 @@ mutable struct DB
     type::Symbol
 end
 
-function list(db::DB)
-    if db.type === :ah
-        return readdir(joinpath(@__DIR__, "../db"))
-    elseif db.type === :authors
-        out = Dict{String,Vector{String}}()
-        folder = joinpath(@__DIR__, "../db")
-        for f in readdir(folder)
-            out[f] = readdir(joinpath(folder, f, "data"))
-        end
-        return out
-    elseif db.type === :books
-        out1 = Dict{String,Dict{String,Vector{String}}}()
-        out2 = Dict{String,Vector{String}}()
-        folder = joinpath(@__DIR__, "../db")
-        for f in readdir(folder)
-            authors = readdir(joinpath(folder, f, "data"))
-            for a in authors
-                out2[a] = readdir(joinpath(folder, f, "data", a))
-                out1[f] = out2
+function list(::Type{OpenITIDB})
+    folder = joinpath(@__DIR__, "../db")
+    
+    ah = []
+    authors = []
+    books = []
+    versions = []
+    for f in readdir(folder)
+        ath_files = readdir(joinpath(folder, f, "data"))
+        for a in ath_files
+            bk_files = readdir(joinpath(folder, f, "data", a))
+            for b in bk_files
+                vrsn_files = readdir(joinpath(folder, f, "data", a, b))
+                push!(versions, vrsn_files)
+                push!(books, repeat([b], outer=length(vrsn_files)))
+                push!(authors, repeat([a], outer=length(vrsn_files)))
+                push!(ah, repeat([f], outer=length(vrsn_files)))
             end
         end
-        return out1
-    elseif db.type === :book_versions
-        out1 = Dict{String,Dict{String,Dict{String,Vector{String}}}}()
-        out2 = Dict{String,Dict{String,Vector{String}}}()
-        out3 = Dict{String,Vector{String}}()
-        folder = joinpath(@__DIR__, "../db")
-        for f in readdir(folder)
-            authors = readdir(joinpath(folder, f, "data"))
-            for a in authors
-                books = readdir(joinpath(folder, f, "data", a))
-                for v in books
-                    out3[v] = readdir(joinpath(folder, f, "data", a, v))
-                    out2[a] = out3
-                    out1[f] = out2
-                end
-            end
-        end
-        return out1
-    else
-        throw("Unknown input type, choices are :ah, :author, :books")
     end
+
+    ah = vcat(ah...)
+    authors = vcat(authors...)
+    books = vcat(books...)
+    versions = vcat(versions...)
+
+    df = DataFrame(Dict(:AH => ah, :Author => authors, :Book => books, :Version => versions))
+    return df
 end
 
-function load(book::String)
-
+function load(::Type{OpenITIDB}, row::Int64)
+    books = list(OpenITIDB)
+    try
+        book = books[row, :]
+        folders = values(book)
+        tree = []
+        for i in 1:length(folders)
+            if i == 2
+                push!(tree, "data")
+                push!(tree, folders[i])
+            else
+                push!(tree, folders[i])
+            end
+        end
+        file = joinpath(@__DIR__, "../db", join(tree, "/"))
+        return readlines(file)
+    catch
+        throw("Row number is not in the data frame.")
+    end
 end

@@ -20,7 +20,7 @@ list(OpenITIDB)
 ```
 
 ## Load OpenITI Data
-To load the data from the list of downloaded OpenITI data, we simply specify the row of the file from the list(OpenITIDB).
+To load the data from the list of downloaded OpenITI data, we simply specify the row of the file from the `list(OpenITIDB)`.
 ```@repl abc
 load(OpenITIDB, 1)
 load(OpenITIDB, 2)

@@ -10,7 +10,8 @@ makedocs(
     modules = [Kitab],
     pages = [
         "Home" => "index.md",
-        "API" => "api.md",
+        "Usage" => "usage.md",
+        "API" => "api.md"
     ]
 )
 

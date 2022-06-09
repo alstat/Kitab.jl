@@ -1,25 +1,34 @@
 using DataFrames
 const OPENITI_DB = joinpath(@__DIR__, "../db")
+"""
+    OpenITIDB(url::String)
 
+Instantiate OpenITIDB type using `url` as input.
+"""
 mutable struct OpenITIDB
     url::String
-    dest::String
 end
 
-function OpenITIDB(url::String) 
-    try
-        mkdir(OPENITI_DB)
-    catch end
-    return OpenITIDB(url, OPENITI_DB)
-end
+"""
+    delete!(::Type{OpenITIDB})
 
+Delete the db folder for saving the downloaded OpenITIDB text
+"""
 function Base.delete!(::Type{OpenITIDB})
     try
         rm(OPENITI_DB, recursive=true)
     catch end
 end
 
+"""
+    download(openiti::OpenITIDB)
+
+Download the OpenITI data.
+"""
 function Base.download(openiti::OpenITIDB)
+    try
+        mkdir(OPENITI_DB)
+    catch end
     url_parts = split(openiti.url, "/")
     ah_folder = joinpath(OPENITI_DB, url_parts[5])
     try mkdir(ah_folder) catch end
@@ -36,10 +45,11 @@ function Base.download(openiti::OpenITIDB)
     HTTP.download(openiti.url, file)
 end
 
-mutable struct DB
-    type::Symbol
-end
+"""
+    list(::Type{OpenITIDB})
 
+List all the downloaded OpenITI data
+"""
 function list(::Type{OpenITIDB})
     folder = joinpath(@__DIR__, "../db")
     
@@ -70,6 +80,12 @@ function list(::Type{OpenITIDB})
     return df
 end
 
+"""
+    load(::Type{OpenITIDB}, row::Int64)
+
+Load the downloaded OpenITI data by specifying the row of the file
+in the output of `list(OpenITIDB)`.
+"""
 function load(::Type{OpenITIDB}, row::Int64)
     books = list(OpenITIDB)
     try

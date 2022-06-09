@@ -20,6 +20,11 @@ const META_KEYS = [
     "LibURI"
 ]
 
+"""
+    MetaData(author, ...)
+
+Instantiate MetaData object
+"""
 mutable struct MetaData
     author::Union{Missing,String}
     author_short_name::Union{Missing,String}
@@ -60,6 +65,11 @@ function extract(data::Array{String}, type::String)
     return extract(raw)
 end
 
+"""
+    extract(::Type{MetaData}, data::Array{String})
+
+Extract metadata from raw `data` text.
+"""
 function extract(::Type{MetaData}, data::Array{String})
     meta = []
     for k in META_KEYS

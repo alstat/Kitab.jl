@@ -10,14 +10,25 @@ mutable struct OpenITIDB
 end
 
 """
+    OpenITIDB(urls::Array{String})
+
+Instantiate OpenITIDB type using multiple `urls` as input.
+"""
+function OpenITIDB(urls::Array{String})
+    return [OpenITIDB(url) for url in urls]
+end
+"""
     delete!(::Type{OpenITIDB})
 
 Delete the db folder for saving the downloaded OpenITIDB text
 """
 function Base.delete!(::Type{OpenITIDB})
     try
+        @info "DB successfully deleted."
         rm(OPENITI_DB, recursive=true)
-    catch end
+    catch 
+        @info "DB unsuccessfully deleted."
+    end
 end
 
 """
@@ -40,9 +51,31 @@ function Base.download(openiti::OpenITIDB)
     book_folder = joinpath(author_folder, url_parts[9])
     try mkdir(book_folder) catch end
 
-    file = joinpath(book_folder, string(url_parts[10], ".txt"))
+    version = string(url_parts[10], ".txt")
+    file = joinpath(book_folder, version)
 
-    HTTP.download(openiti.url, file)
+    if check_book(book_folder, version)
+        @info "File $version already exists, no need to download. To force download, run delete!(OpenITIDB) to delete all the DB and download again."
+    else
+        HTTP.download(openiti.url, file)
+    end
+end
+
+function check_book(book_folder::String, filename::String)
+    versions = readdir(book_folder)
+    files = findall(x -> x == filename, versions)
+    return length(files) == 0 ? false : true
+end
+
+"""
+    download(openitis::Array{OpenITIDB})
+
+Download OpenITIDB data using an array of it to downloaded multiple data.
+"""
+function Base.download(openitis::Array{OpenITIDB})
+    for openiti in openitis
+        download(openiti)
+    end
 end
 
 """

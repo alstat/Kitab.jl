@@ -1,6 +1,6 @@
 name = "Kitab"
 uuid = "56988f64-bbe1-4670-be0e-9b8570beea21"
-authors = ["al-ahmadgaidasaad <alahmadgaid@gmail.com>"]
+authors = ["Al-Ahmadgaid B. Asaad"]
 version = "0.1.0"
 
 [deps]

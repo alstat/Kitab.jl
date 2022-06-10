@@ -1,4 +1,4 @@
-# Usage
+# Data Extraction
 In this section, we are going to demonstrate how to use the package.
 
 ## Downloading OpenITI Data

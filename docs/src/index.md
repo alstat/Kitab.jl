@@ -13,7 +13,8 @@ julia> Pkg.add("Kitab")
 ## Outline
 ```@contents
 Pages = [
-    "usage.md",
+    "metadata.md",
+    "data.md",
     "api.md"
 ]
 Depth = 2

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g transform="matrix(0.59226,-0.59226,0.59226,0.59226,-21.0361,156.784)">
+<svg width="100%" height="100%" viewBox="0 0 600 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1.18442,-1.18442,1.18442,1.18442,-42.0306,313.721)">
         <g>
             <g transform="matrix(-8.56699e-16,-5.8035,3.98558,-5.09109e-16,-231.626,465.615)">
                 <rect x="53.17" y="90.885" width="6.455" height="23.128" style="fill:rgb(203,60,51);"/>
@@ -43,13 +43,13 @@
         </g>
         <g>
             <g transform="matrix(5.8035,-2.99966e-16,1.26932e-15,1.62141,-69.4876,-135.341)">
-                <rect x="53.17" y="90.885" width="6.455" height="23.128" style="fill:rgb(39,119,24);"/>
+                <rect x="53.17" y="90.885" width="6.455" height="23.128" style="fill:rgb(56,152,38);"/>
             </g>
             <g transform="matrix(7.43784e-16,5.8035,-6.31957,2.18568e-15,850.902,-242.923)">
-                <rect x="53.17" y="90.885" width="6.455" height="23.128" style="fill:rgb(39,119,24);"/>
+                <rect x="53.17" y="90.885" width="6.455" height="23.128" style="fill:rgb(56,152,38);"/>
             </g>
             <g transform="matrix(-5.8035,9.53614e-16,-2.28267e-15,-3.95179,585.466,516.204)">
-                <rect x="53.17" y="90.885" width="6.455" height="23.128" style="fill:rgb(39,119,24);"/>
+                <rect x="53.17" y="90.885" width="6.455" height="23.128" style="fill:rgb(56,152,38);"/>
             </g>
         </g>
     </g>

@@ -27,7 +27,7 @@ function Base.delete!(::Type{OpenITIDB})
         @info "DB successfully deleted."
         rm(OPENITI_DB, recursive=true)
     catch 
-        @info "DB unsuccessfully deleted."
+        throw("Some problem occurred, cannot delete.")
     end
 end
 

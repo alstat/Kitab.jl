@@ -6,11 +6,11 @@ Kitab.jl is an interface to the [Open Islamic Texts Initiative (OpenITI)](https:
 
 At a high-level, Kitab.jl aims to fill the gap of doing Islamicate Digital Humanities in Julia. Currently, studying Qur'an using Julia is now accessible through [QuranTree.jl](https://alstat.github.io/QuranTree.jl/stable/), and analysis via Arabic Natural Language Processing (ANLP) is now provided by [Yunir.jl](https://alstat.github.io/Yunir.jl/stable/). Therefore, relating pre-modern Islamicate texts to the Qur'an is now possible with Kitab.jl.
 
-Kitab.jl therefore provides APIs for downloading, listing, and loading the said OpenITI text data. Tools for analyzing Kitab.jl are then provided by [Yunir.jl](https://alstat.github.io/Yunir.jl/stable/)
+Kitab.jl therefore provides APIs for downloading, listing, and loading the said OpenITI text data. Tools for analyzing the processed data by Kitab.jl are then provided by [Yunir.jl](https://alstat.github.io/Yunir.jl/stable/)
 
 We have to emphasize that, another user of the OpenITI texts is the [KITAB (Knowledge, Information Technology, & the Arabic Book) project](https://kitab-project.org/), which provides a digital tool-box and a forum for discussions about Arabic texts. KITAB project wish to empower users to explore Arabic texts in completely new ways and to expand the frontiers of knowledge about one of the world’s largest and most complex textual traditions.
 
-Kitab.jl is therefore somewhat similar to KITAB project, as both uses OpenITI as their main source for Arabic text books, and both aims to provide tools for analyzing the said texts. You might want to check out the interesting use-cases in KITAB project [blog posts](https://kitab-project.org/blogs).
+Kitab.jl is therefore somewhat similar to KITAB project, as both uses OpenITI as their main source for Arabic text books, and both aims to provide tools for analyzing the said texts. You might want to check out the interesting use-cases in KITAB project [blog posts](https://kitab-project.org/blogs). However, Kitab.jl is independently developed but takes inspiration from KITAB project as well.
 
 Lastly, _kitab_ (کتاب) /kitāb/ is the Arabic word for _"book."_ The logo is a Kufic calligraphy of the Arabic word کتاب.
 

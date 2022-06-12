@@ -12,7 +12,7 @@ Kitab.jl therefore provides APIs for downloading, listing, and loading the said 
 
 We have to emphasize that, another user of the OpenITI texts is the [KITAB (Knowledge, Information Technology, & the Arabic Book) project](https://kitab-project.org/), which provides a digital tool-box and a forum for discussions about Arabic texts. KITAB project wish to empower users to explore Arabic texts in completely new ways and to expand the frontiers of knowledge about one of the world’s largest and most complex textual traditions.
 
-Kitab.jl is therefore somewhat similar to KITAB project, as both uses OpenITI as their main source for Arabic text books, and both aims to provide tools for analyzing the said texts. You might want to check out the interesting use-cases in KITAB project [blog posts](https://kitab-project.org/blogs). However, Kitab.jl is independently developed but takes inspiration from KITAB project as well.
+Kitab.jl is therefore somewhat similar to KITAB project, as both uses OpenITI as their main source for Arabic text books, and both aims to provide tools for analyzing the said texts. You might want to check out the interesting use-cases in KITAB project [blog posts](https://kitab-project.org/blogs). Kitab.jl is independently developed but takes inspiration from KITAB project as well.
 
 Lastly, _kitab_ (کتاب) /kitāb/ is the Arabic word for _"book."_ The logo is a Kufic calligraphy of the Arabic word کتاب.
 

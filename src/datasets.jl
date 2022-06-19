@@ -40,10 +40,10 @@ that can be viewed using `list(OpenITIDB)`
 function Base.delete!(::Type{OpenITIDB}, row::Int64)
     books = list(OpenITIDB)
     try
-        @info "File successfully deleted."
         tree = genpath(books, row)
         file = joinpath(@__DIR__, "../db", join(tree, "/"))
         rm(file, recursive=true)
+        @info "File successfully deleted."
     catch 
         @info "Skipping: Skipping deletion of the text book since it does not exists."
     end

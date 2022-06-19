@@ -33,7 +33,12 @@ To load the data from the list of downloaded OpenITI data, we simply specify the
 ```@repl abc
 load(OpenITIDB, 1)
 load(OpenITIDB, 2)
-load(OpenITIDB, 3)
+```
+Another approach is to use broadcasting as follows:
+```@repl abc
+b1, b2 = load.(OpenITIDB, [2, 3]);
+b1
+b2
 ```
 
 ## Delete OpenITI Local DB folder
@@ -41,6 +46,12 @@ To delete a particular file from the list of text books as returned by the `list
 ```@repl abc
 list(OpenITIDB)
 delete!(OpenITIDB, 1)
+list(OpenITIDB)
+```
+To delete multiple files or text books, use broadcasting:
+```@repl abc
+delete!(OpenITIDB, 1)
+delete!(OpenITIDB, 2)
 list(OpenITIDB)
 ```
 Now to delete local DB folder, that is, deleting all files and folders containing the text books, simply run the following:

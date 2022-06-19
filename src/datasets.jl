@@ -20,7 +20,7 @@ end
 """
     delete!(::Type{OpenITIDB})
 
-Delete the db folder for saving the downloaded OpenITIDB text
+Delete the DB folder used for saving the downloaded OpenITIDB text books
 """
 function Base.delete!(::Type{OpenITIDB})
     try
@@ -31,6 +31,23 @@ function Base.delete!(::Type{OpenITIDB})
     end
 end
 
+"""
+    delete!(::Type{OpenITIDB}, row::Int64)
+
+Delete a particular book file using input `row` as identifier from list of books
+that can be viewed using `list(OpenITIDB)`
+"""
+function Base.delete!(::Type{OpenITIDB}, row::Int64)
+    books = list(OpenITIDB)
+    try
+        @info "File successfully deleted."
+        tree = genpath(books, row)
+        file = joinpath(@__DIR__, "../db", join(tree, "/"))
+        rm(file, recursive=true)
+    catch 
+        @info "Skipping: Skipping deletion of the text book since it does not exists."
+    end
+end
 """
     get(::Type{OpenITIDB}, url::String)
 
@@ -74,7 +91,7 @@ end
 """
     get(::Type{OpenITIDB}, url::Array{String})
 
-Download the multiple OpenITI books.
+Download multiple OpenITI books using multiple urls through `Array{String}`.
 """
 function Base.get(::Type{OpenITIDB}, url::Array{String})
     download(OpenITIDB(url))
@@ -89,7 +106,7 @@ end
 """
     list(::Type{OpenITIDB})
 
-List all the downloaded OpenITI data
+List all the downloaded OpenITI text books
 """
 function list(::Type{OpenITIDB})
     folder = joinpath(@__DIR__, "../db")
@@ -130,20 +147,25 @@ in the output of `list(OpenITIDB)`.
 function load(::Type{OpenITIDB}, row::Int64)
     books = list(OpenITIDB)
     try
-        book = books[row, :]
-        folders = values(book)
-        tree = []
-        for i in 1:length(folders)
-            if i == 2
-                push!(tree, "data")
-                push!(tree, folders[i])
-            else
-                push!(tree, folders[i])
-            end
-        end
+        tree = genpath(books, row)
         file = joinpath(@__DIR__, "../db", join(tree, "/"))
         return readlines(file)
     catch
         throw("Row number is not in the data frame.")
     end
+end
+
+function genpath(books::DataFrame, row::Int64)
+    book = books[row, :]
+    folders = values(book)
+    tree = []
+    for i in 1:length(folders)
+        if i == 2
+            push!(tree, "data")
+            push!(tree, folders[i])
+        else
+            push!(tree, folders[i])
+        end
+    end
+    return tree
 end

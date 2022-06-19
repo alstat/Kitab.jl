@@ -37,7 +37,13 @@ load(OpenITIDB, 3)
 ```
 
 ## Delete OpenITI Local DB folder
-To delete local DB folder, simply run the following:
+To delete a particular file from the list of text books as returned by the `list(OpenITIDB)`, simply use the row number of the file from the said list to delete as follows:
+```@repl abc
+list(OpenITIDB)
+delete!(OpenITIDB, 1)
+list(OpenITIDB)
+```
+Now to delete local DB folder, that is, deleting all files and folders containing the text books, simply run the following:
 ```@repl abc
 delete!(OpenITIDB)
 ```

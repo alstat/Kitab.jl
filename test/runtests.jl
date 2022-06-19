@@ -15,10 +15,15 @@ txt = load(OpenITIDB, 1)
 meta = extract(MetaData, txt)
 @test meta.author == "مسلم بن الحجاج أبو الحسن القشيري النيسابوري"
 
-muslim_sahih = "https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0261Muslim/0261Muslim.Sahih/0261Muslim.Sahih.Shamela0001727-ara1.mARkdown";
-bukhari_sahih = "https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0256Bukhari/0256Bukhari.Sahih/0256Bukhari.Sahih.JK000110-ara1.completed";
-bukhari_ducafa = "https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0256Bukhari/0256Bukhari.Ducafa/0256Bukhari.Ducafa.Shamela0008632-ara1.mARkdown";
-get(OpenITIDB, [bukhari_ducafa, bukhari_sahih])
+muslimsahih = "https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0261Muslim/0261Muslim.Sahih/0261Muslim.Sahih.Shamela0001727-ara1.mARkdown";
+bukharisahih = "https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0256Bukhari/0256Bukhari.Sahih/0256Bukhari.Sahih.JK000110-ara1.completed";
+bukhariducafa = "https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0256Bukhari/0256Bukhari.Ducafa/0256Bukhari.Ducafa.Shamela0008632-ara1.mARkdown";
+get(OpenITIDB, [muslimsahih, bukhariducafa, bukharisahih])
 
 df = list(OpenITIDB)
+@test size(df, 1) == 3
 @test values(df[2, :]) == ("0275AH", "0256Bukhari", "0256Bukhari.Sahih", "0256Bukhari.Sahih.JK000110-ara1.completed.txt")
+
+delete!(OpenITIDB, 1)
+df = list(OpenITIDB)
+@test size(df, 1) == 2

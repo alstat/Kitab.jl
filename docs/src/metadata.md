@@ -2,7 +2,7 @@
 In this section, we are going to illustrate how to extract the metadata of the book.
 
 ## Extraction of MetaData
-To extract the metadata of the book, we use the API `extract(MetaData, text)`. So that, the following will download Muslim Sahih (shamela):
+To extract the metadata of the book, we use the API `extract(MetaData, text)`. So that, the following will download the Muslim Sahih (shamela) book:
 
 ```@repl abc
 using Kitab

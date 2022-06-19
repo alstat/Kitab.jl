@@ -72,9 +72,9 @@ function check_book(book_folder::String, filename::String)
 end
 
 """
-    get(::Type{OpenITIDB}, url::String)
+    get(::Type{OpenITIDB}, url::Array{String})
 
-Download the OpenITI data.
+Download the multiple OpenITI books.
 """
 function Base.get(::Type{OpenITIDB}, url::Array{String})
     download(OpenITIDB(url))

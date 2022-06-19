@@ -3,9 +3,9 @@
 │   source = &quot;https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0261Muslim/0261Muslim.Sahih/0261Muslim.Sahih.Shamela0001727-ara1.mARkdown&quot;
 │   dest = &quot;/home/runner/work/Kitab.jl/Kitab.jl/src/../db/0275AH/data/0261Muslim/0261Muslim.Sahih/0261Muslim.Sahih.Shamela0001727-ara1.mARkdown.txt&quot;
 │   progress = 1.0
-│   time_taken = &quot;0.45 s&quot;
+│   time_taken = &quot;0.22 s&quot;
 │   time_remaining = &quot;0.0 s&quot;
-│   average_speed = &quot;10.455 MiB/s&quot;
+│   average_speed = &quot;21.098 MiB/s&quot;
 │   downloaded = &quot;4.705 MiB&quot;
 │   remaining = &quot;0 bytes&quot;
 └   total = &quot;4.705 MiB&quot;
@@ -13,9 +13,9 @@
 │   source = &quot;https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0256Bukhari/0256Bukhari.Sahih/0256Bukhari.Sahih.JK000110-ara1.completed&quot;
 │   dest = &quot;/home/runner/work/Kitab.jl/Kitab.jl/src/../db/0275AH/data/0256Bukhari/0256Bukhari.Sahih/0256Bukhari.Sahih.JK000110-ara1.completed.txt&quot;
 │   progress = 1.0
-│   time_taken = &quot;0.18 s&quot;
+│   time_taken = &quot;0.2 s&quot;
 │   time_remaining = &quot;0.0 s&quot;
-│   average_speed = &quot;28.789 MiB/s&quot;
+│   average_speed = &quot;26.082 MiB/s&quot;
 │   downloaded = &quot;5.268 MiB&quot;
 │   remaining = &quot;0 bytes&quot;
 └   total = &quot;5.268 MiB&quot;
@@ -25,7 +25,7 @@
 │   progress = 1.0
 │   time_taken = &quot;0.0 s&quot;
 │   time_remaining = &quot;0.0 s&quot;
-│   average_speed = &quot;29.868 MiB/s&quot;
+│   average_speed = &quot;22.401 MiB/s&quot;
 │   downloaded = &quot;91.755 KiB&quot;
 │   remaining = &quot;0 bytes&quot;
 └   total = &quot;91.755 KiB&quot;</code></pre><p>Once downloaded, re-downloading will not proceed if the file already exists.</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; get(OpenITIDB, [bukharisahih, bukhariducafa])</code><code class="nohighlight hljs ansi" style="display:block;">[ Info: File 0256Bukhari.Sahih.JK000110-ara1.completed.txt already exists, no need to download. To force download, run delete!(OpenITIDB) to delete all the DB and download again.
@@ -76,7 +76,27 @@
  &quot;# 7124 حدثنا أحمد بن إشكاب حدثنا محمد بن فضيل عن عمارة بن القعقاع عن أبي&quot;
  &quot;~~زرعة عن أبي هريرة رضي الله عنه قال قال النبي صلى الله عليه وسلم * كلمتان&quot;
  &quot;~~حبيبتان إلى الرحمن خفيفتان على اللسان ثقيلتان في الميزان سبحان الله&quot;
- &quot;~~وبحمده سبحان الله العظيم PageV06P2749 ms1979&quot;</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; load(OpenITIDB, 3)</code><code class="nohighlight hljs ansi" style="display:block;">54111-element Vector{String}:
+ &quot;~~وبحمده سبحان الله العظيم PageV06P2749 ms1979&quot;</code></pre><p>Another approach is to use broadcasting as follows:</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; b1, b2 = load.(OpenITIDB, [2, 3]);</code><code class="nohighlight hljs ansi" style="display:block;"></code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; b1</code><code class="nohighlight hljs ansi" style="display:block;">48686-element Vector{String}:
+ &quot;######OpenITI#&quot;
+ &quot;&quot;
+ &quot;&quot;
+ &quot;#META# 000.SortField\t:: JK_000110&quot;
+ &quot;#META# 000.BookURI\t:: #0256.MuhammadBukhari.Sahih&quot;
+ &quot;#META# 010.AuthorAKA\t:: البخاري&quot;
+ &quot;#META# 010.AuthorNAME\t:: محمد بن إسماعيل أبو عبدالله البخاري الجعفي&quot;
+ &quot;#META# 011.AuthorBORN\t:: 194&quot;
+ &quot;#META# 011.AuthorDIED\t:: 256&quot;
+ &quot;#META# 019.AuthorDIED\t:: NODATA&quot;
+ ⋮
+ &quot;~~من الدين كما يمرق السهم من الرمية ثم لا يعودون فيه حتى يعود السهم إلى&quot;
+ &quot;~~فوقه قيل ما سيماهم قال سيماهم التحليق أو قال التسبيد PageV06P2748&quot;
+ &quot;### || ( 58 باب ms1978 قول الله&quot; ⋯ 58 bytes ⋯ &quot; وأن أعمال بني آدم وقولهم يوزن &quot;
+ &quot;# وقال مجاهد القسطاس العدل بالرومية ويقال القسط مصدر&quot;
+ &quot;~~المقسط وهو العادل وأما القاسط فهو الجائر )&quot;
+ &quot;# 7124 حدثنا أحمد بن إشكاب حدثنا محمد بن فضيل عن عمارة بن القعقاع عن أبي&quot;
+ &quot;~~زرعة عن أبي هريرة رضي الله عنه قال قال النبي صلى الله عليه وسلم * كلمتان&quot;
+ &quot;~~حبيبتان إلى الرحمن خفيفتان على اللسان ثقيلتان في الميزان سبحان الله&quot;
+ &quot;~~وبحمده سبحان الله العظيم PageV06P2749 ms1979&quot;</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; b2</code><code class="nohighlight hljs ansi" style="display:block;">54111-element Vector{String}:
  &quot;######OpenITI#&quot;
  &quot;#META# 001.AuthorNAME    ::  مسلم بن الحجاج أبو الحسن القشيري النيسابوري&quot;
  &quot;#META# 002.AuthorSHORTNAME  ::  مسلم&quot;
@@ -109,4 +129,8 @@
 ─────┼──────────────────────────────────────────────────────────────────────────
    1 │ 0275AH  0256Bukhari  0256Bukhari.Sahih  0256Bukhari.Sahih.JK000110-ara1 ⋯
    2 │ 0275AH  0261Muslim   0261Muslim.Sahih   0261Muslim.Sahih.Shamela0001727
-                                                                1 column omitted</code></pre><p>Now to delete local DB folder, that is, deleting all files and folders containing the text books, simply run the following:</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; delete!(OpenITIDB)</code><code class="nohighlight hljs ansi" style="display:block;">[ Info: DB successfully deleted.</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../">« Home</a><a class="docs-footer-nextpage" href="../metadata/">MetaData »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.19 on <span class="colophon-date" title="Sunday 19 June 2022 08:36">Sunday 19 June 2022</span>. Using Julia version 1.7.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+                                                                1 column omitted</code></pre><p>To delete multiple files or text books, use broadcasting:</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; delete!(OpenITIDB, 1)</code><code class="nohighlight hljs ansi" style="display:block;">[ Info: File successfully deleted.</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; delete!(OpenITIDB, 2)</code><code class="nohighlight hljs ansi" style="display:block;">[ Info: Skipping: Skipping deletion of the text book since it does not exists.</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; list(OpenITIDB)</code><code class="nohighlight hljs ansi" style="display:block;">1×4 DataFrame
+ Row │ AH      Author      Book              Version                           ⋯
+     │ String  String      String            String                            ⋯
+─────┼──────────────────────────────────────────────────────────────────────────
+   1 │ 0275AH  0261Muslim  0261Muslim.Sahih  0261Muslim.Sahih.Shamela0001727-… ⋯</code></pre><p>Now to delete local DB folder, that is, deleting all files and folders containing the text books, simply run the following:</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; delete!(OpenITIDB)</code><code class="nohighlight hljs ansi" style="display:block;">[ Info: DB successfully deleted.</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../">« Home</a><a class="docs-footer-nextpage" href="../metadata/">MetaData »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.19 on <span class="colophon-date" title="Sunday 19 June 2022 13:08">Sunday 19 June 2022</span>. Using Julia version 1.7.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

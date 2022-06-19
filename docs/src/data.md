@@ -1,25 +1,25 @@
 # Data Extraction
-In this section, we are going to demonstrate how to use the package.
+In this section, we are going to illustrate how to use the APIs for downloading, loading and deleting the data.
 
 ## Downloading OpenITI Data
-The data is available in the repositories of [OpenITI Github group](https://github.com/OpenITI), arranged according to Hijrah year of the books. Further, most of these books are also available in the catalog of books metada of the [KITAB project](https://kitab-project.org/), which can be accessed via this [link](https://kitab-corpus-metadata.azurewebsites.net/).
+The data is available in the repositories of [OpenITI Github group](https://github.com/OpenITI), arranged according to Hijrah year of the books. Further, most of these books are also available in the catalog of books metadata of the [KITAB project](https://kitab-project.org/), which can be accessed via this [link](https://kitab-corpus-metadata.azurewebsites.net/).
 ```@repl abc
 using Kitab
 
-muslim_sahih = "https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0261Muslim/0261Muslim.Sahih/0261Muslim.Sahih.Shamela0001727-ara1.mARkdown";
-download(OpenITIDB(muslim_sahih))
+muslimsahih = "https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0261Muslim/0261Muslim.Sahih/0261Muslim.Sahih.Shamela0001727-ara1.mARkdown";
+get(OpenITIDB, muslimsahih)
 ```
 ## Downloading Multiple URLs
 To download multiple URLs, use an array of it.
 ```@repl abc
-bukhari_sahih = "https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0256Bukhari/0256Bukhari.Sahih/0256Bukhari.Sahih.JK000110-ara1.completed"
-bukhari_ducafa = "https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0256Bukhari/0256Bukhari.Ducafa/0256Bukhari.Ducafa.Shamela0008632-ara1.mARkdown"
+bukharisahih = "https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0256Bukhari/0256Bukhari.Sahih/0256Bukhari.Sahih.JK000110-ara1.completed"
+bukhariducafa = "https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0256Bukhari/0256Bukhari.Ducafa/0256Bukhari.Ducafa.Shamela0008632-ara1.mARkdown"
 
-download(OpenITIDB([bukhari_sahih, bukhari_ducafa]))
+get(OpenITIDB, [bukharisahih, bukhariducafa])
 ```
 Once downloaded, re-downloading will not proceed if the file already exists.
 ```@repl abc
-download(OpenITIDB([bukhari_sahih, bukhari_ducafa]))
+get(OpenITIDB, [bukharisahih, bukhariducafa])
 ```
 
 ## List downloaded OpenITI Data

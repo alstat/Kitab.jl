@@ -32,10 +32,14 @@ function Base.delete!(::Type{OpenITIDB})
 end
 
 """
-    download(openiti::OpenITIDB)
+    get(::Type{OpenITIDB}, url::String)
 
 Download the OpenITI data.
 """
+function Base.get(::Type{OpenITIDB}, url::String)
+    download(OpenITIDB(url))
+end
+
 function Base.download(openiti::OpenITIDB)
     try
         mkdir(OPENITI_DB)
@@ -68,10 +72,14 @@ function check_book(book_folder::String, filename::String)
 end
 
 """
-    download(openitis::Array{OpenITIDB})
+    get(::Type{OpenITIDB}, url::String)
 
-Download OpenITIDB data using an array of it to downloaded multiple data.
+Download the OpenITI data.
 """
+function Base.get(::Type{OpenITIDB}, url::Array{String})
+    download(OpenITIDB(url))
+end
+
 function Base.download(openitis::Array{OpenITIDB})
     for openiti in openitis
         download(openiti)

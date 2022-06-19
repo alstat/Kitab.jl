@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Data Extraction · Kitab.jl</title><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.044/juliamono.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script><link href="../assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../"><img class="docs-light-only" src="../assets/logo.svg" alt="Kitab.jl logo"/><img class="docs-dark-only" src="../assets/logo-dark.svg" alt="Kitab.jl logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href="../">Kitab.jl</a></span></div><form class="docs-search" action="../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../">Home</a></li><li class="is-active"><a class="tocitem" href>Data Extraction</a><ul class="internal"><li><a class="tocitem" href="#Downloading-OpenITI-Data"><span>Downloading OpenITI Data</span></a></li><li><a class="tocitem" href="#Downloading-Multiple-URLs"><span>Downloading Multiple URLs</span></a></li><li><a class="tocitem" href="#List-downloaded-OpenITI-Data"><span>List downloaded OpenITI Data</span></a></li><li><a class="tocitem" href="#Load-OpenITI-Data"><span>Load OpenITI Data</span></a></li><li><a class="tocitem" href="#Delete-OpenITI-Local-DB-folder"><span>Delete OpenITI Local DB folder</span></a></li></ul></li><li><a class="tocitem" href="../metadata/">MetaData</a></li><li><a class="tocitem" href="../api/">API</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Data Extraction</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Data Extraction</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/alstat/Kitab.jl/blob/master/docs/src/data.md" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Data-Extraction"><a class="docs-heading-anchor" href="#Data-Extraction">Data Extraction</a><a id="Data-Extraction-1"></a><a class="docs-heading-anchor-permalink" href="#Data-Extraction" title="Permalink"></a></h1><p>In this section, we are going to illustrate how to use the APIs for downloading, loading and deleting the data.</p><h2 id="Downloading-OpenITI-Data"><a class="docs-heading-anchor" href="#Downloading-OpenITI-Data">Downloading OpenITI Data</a><a id="Downloading-OpenITI-Data-1"></a><a class="docs-heading-anchor-permalink" href="#Downloading-OpenITI-Data" title="Permalink"></a></h2><p>The data is available in the repositories of <a href="https://github.com/OpenITI">OpenITI Github group</a>, arranged according to Hijrah year of the books. Further, most of these books are also available in the catalog of books metadata of the <a href="https://kitab-project.org/">KITAB project</a>, which can be accessed via this <a href="https://kitab-corpus-metadata.azurewebsites.net/">link</a>.</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; using Kitab</code><code class="nohighlight hljs ansi" style="display:block;"></code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; muslimsahih = &quot;https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0261Muslim/0261Muslim.Sahih/0261Muslim.Sahih.Shamela0001727-ara1.mARkdown&quot;;</code><code class="nohighlight hljs ansi" style="display:block;"></code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; get(OpenITIDB, muslimsahih)</code><code class="nohighlight hljs ansi" style="display:block;">┌ Info: Downloading
+│   source = &quot;https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0261Muslim/0261Muslim.Sahih/0261Muslim.Sahih.Shamela0001727-ara1.mARkdown&quot;
+│   dest = &quot;/home/runner/work/Kitab.jl/Kitab.jl/src/../db/0275AH/data/0261Muslim/0261Muslim.Sahih/0261Muslim.Sahih.Shamela0001727-ara1.mARkdown.txt&quot;
+│   progress = 1.0
+│   time_taken = &quot;0.3 s&quot;
+│   time_remaining = &quot;0.0 s&quot;
+│   average_speed = &quot;15.895 MiB/s&quot;
+│   downloaded = &quot;4.705 MiB&quot;
+│   remaining = &quot;0 bytes&quot;
+└   total = &quot;4.705 MiB&quot;
+&quot;/home/runner/work/Kitab.jl/Kitab.jl/src/../db/0275AH/data/0261Muslim/0261Muslim.Sahih/0261Muslim.Sahih.Shamela0001727-ara1.mARkdown.txt&quot;</code></pre><h2 id="Downloading-Multiple-URLs"><a class="docs-heading-anchor" href="#Downloading-Multiple-URLs">Downloading Multiple URLs</a><a id="Downloading-Multiple-URLs-1"></a><a class="docs-heading-anchor-permalink" href="#Downloading-Multiple-URLs" title="Permalink"></a></h2><p>To download multiple URLs, use an array of it.</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; bukharisahih = &quot;https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0256Bukhari/0256Bukhari.Sahih/0256Bukhari.Sahih.JK000110-ara1.completed&quot;;</code><code class="nohighlight hljs ansi" style="display:block;"></code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; bukhariducafa = &quot;https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0256Bukhari/0256Bukhari.Ducafa/0256Bukhari.Ducafa.Shamela0008632-ara1.mARkdown&quot;;</code><code class="nohighlight hljs ansi" style="display:block;"></code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; get(OpenITIDB, [bukharisahih, bukhariducafa])</code><code class="nohighlight hljs ansi" style="display:block;">┌ Info: Downloading
+│   source = &quot;https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0256Bukhari/0256Bukhari.Sahih/0256Bukhari.Sahih.JK000110-ara1.completed&quot;
+│   dest = &quot;/home/runner/work/Kitab.jl/Kitab.jl/src/../db/0275AH/data/0256Bukhari/0256Bukhari.Sahih/0256Bukhari.Sahih.JK000110-ara1.completed.txt&quot;
+│   progress = 1.0
+│   time_taken = &quot;0.24 s&quot;
+│   time_remaining = &quot;0.0 s&quot;
+│   average_speed = &quot;21.504 MiB/s&quot;
+│   downloaded = &quot;5.268 MiB&quot;
+│   remaining = &quot;0 bytes&quot;
+└   total = &quot;5.268 MiB&quot;
+┌ Info: Downloading
+│   source = &quot;https://raw.githubusercontent.com/OpenITI/0275AH/master/data/0256Bukhari/0256Bukhari.Ducafa/0256Bukhari.Ducafa.Shamela0008632-ara1.mARkdown&quot;
+│   dest = &quot;/home/runner/work/Kitab.jl/Kitab.jl/src/../db/0275AH/data/0256Bukhari/0256Bukhari.Ducafa/0256Bukhari.Ducafa.Shamela0008632-ara1.mARkdown.txt&quot;
+│   progress = 1.0
+│   time_taken = &quot;0.0 s&quot;
+│   time_remaining = &quot;0.0 s&quot;
+│   average_speed = &quot;29.868 MiB/s&quot;
+│   downloaded = &quot;91.755 KiB&quot;
+│   remaining = &quot;0 bytes&quot;
+└   total = &quot;91.755 KiB&quot;</code></pre><p>Once downloaded, re-downloading will not proceed if the file already exists.</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; get(OpenITIDB, [bukharisahih, bukhariducafa])</code><code class="nohighlight hljs ansi" style="display:block;">[ Info: File 0256Bukhari.Sahih.JK000110-ara1.completed.txt already exists, no need to download. To force download, run delete!(OpenITIDB) to delete all the DB and download again.
+[ Info: File 0256Bukhari.Ducafa.Shamela0008632-ara1.mARkdown.txt already exists, no need to download. To force download, run delete!(OpenITIDB) to delete all the DB and download again.</code></pre><h2 id="List-downloaded-OpenITI-Data"><a class="docs-heading-anchor" href="#List-downloaded-OpenITI-Data">List downloaded OpenITI Data</a><a id="List-downloaded-OpenITI-Data-1"></a><a class="docs-heading-anchor-permalink" href="#List-downloaded-OpenITI-Data" title="Permalink"></a></h2><p>To list the downloaded data, simply use the <code>list</code> function as follows:</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; list(OpenITIDB)</code><code class="nohighlight hljs ansi" style="display:block;">3×4 DataFrame
+ Row │ AH      Author       Book                Version                        ⋯
+     │ String  String       String              String                         ⋯
+─────┼──────────────────────────────────────────────────────────────────────────
+   1 │ 0275AH  0256Bukhari  0256Bukhari.Ducafa  0256Bukhari.Ducafa.Shamela0008 ⋯
+   2 │ 0275AH  0256Bukhari  0256Bukhari.Sahih   0256Bukhari.Sahih.JK000110-ara
+   3 │ 0275AH  0261Muslim   0261Muslim.Sahih    0261Muslim.Sahih.Shamela000172
+                                                                1 column omitted</code></pre><h2 id="Load-OpenITI-Data"><a class="docs-heading-anchor" href="#Load-OpenITI-Data">Load OpenITI Data</a><a id="Load-OpenITI-Data-1"></a><a class="docs-heading-anchor-permalink" href="#Load-OpenITI-Data" title="Permalink"></a></h2><p>To load the data from the list of downloaded OpenITI data, we simply specify the row of the file from the <code>list(OpenITIDB)</code>.</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; load(OpenITIDB, 1)</code><code class="nohighlight hljs ansi" style="display:block;">1557-element Vector{String}:
+ &quot;######OpenITI#&quot;
+ &quot;&quot;
+ &quot;&quot;
+ &quot;#META# 000.SortField\t:: Shamela_0008632&quot;
+ &quot;#META# 000.BookURI\t:: #0256.MuhammadBukhari.Ducafa&quot;
+ &quot;#META# 010.AuthorAKA\t:: NODATA&quot;
+ &quot;#META# 010.AuthorNAME\t:: محمد ب&quot; ⋯ 72 bytes ⋯ &quot;، أبو عبد الله (المتوفى: 256هـ)&quot;
+ &quot;#META# 011.AuthorBORN\t:: NOTGIVEN&quot;
+ &quot;#META# 011.AuthorDIED\t:: 256&quot;
+ &quot;#META# 019.AuthorDIED\t:: NODATA&quot;
+ ⋮
+ &quot;# أبو ماجد الحنفي: عن ابن مسعود، ويقال العجلي، قال الحميدي: PageV01P143&quot;
+ &quot;# عن ابن عيينة، قلت ليحيى الجابر: من أبو ماجد؟ قال: طار طير علينا،&quot;
+ &quot;~~فحدثنا، وهو منكر الحديث.&quot;
+ &quot;# آخر كتاب الضعفاء.&quot;
+ &quot;### |PARATEXT|&quot;
+ &quot;# فرغ من تعليقه الفقير إلى الله تعالى: عمر بن إبراهيم ms30 بن عبد الله بن عبد&quot;
+ &quot;~~الله بن محمد بن العجمي الشافعي الحلبي1 عفا الله عنهم في بكرة نهار الأحد&quot;
+ &quot;~~رابع عشرين جمادى الأول من سنة إحدى وثلاثين وسبعمائة من هجرة سيدنا محمد&quot;
+ &quot;~~صلى الله عليه وصحبه، وسلم تسليما كثيرا. PageV01P144 ms31&quot;</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; load(OpenITIDB, 2)</code><code class="nohighlight hljs ansi" style="display:block;">48686-element Vector{String}:
+ &quot;######OpenITI#&quot;
+ &quot;&quot;
+ &quot;&quot;
+ &quot;#META# 000.SortField\t:: JK_000110&quot;
+ &quot;#META# 000.BookURI\t:: #0256.MuhammadBukhari.Sahih&quot;
+ &quot;#META# 010.AuthorAKA\t:: البخاري&quot;
+ &quot;#META# 010.AuthorNAME\t:: محمد بن إسماعيل أبو عبدالله البخاري الجعفي&quot;
+ &quot;#META# 011.AuthorBORN\t:: 194&quot;
+ &quot;#META# 011.AuthorDIED\t:: 256&quot;
+ &quot;#META# 019.AuthorDIED\t:: NODATA&quot;
+ ⋮
+ &quot;~~من الدين كما يمرق السهم من الرمية ثم لا يعودون فيه حتى يعود السهم إلى&quot;
+ &quot;~~فوقه قيل ما سيماهم قال سيماهم التحليق أو قال التسبيد PageV06P2748&quot;
+ &quot;### || ( 58 باب ms1978 قول الله&quot; ⋯ 58 bytes ⋯ &quot; وأن أعمال بني آدم وقولهم يوزن &quot;
+ &quot;# وقال مجاهد القسطاس العدل بالرومية ويقال القسط مصدر&quot;
+ &quot;~~المقسط وهو العادل وأما القاسط فهو الجائر )&quot;
+ &quot;# 7124 حدثنا أحمد بن إشكاب حدثنا محمد بن فضيل عن عمارة بن القعقاع عن أبي&quot;
+ &quot;~~زرعة عن أبي هريرة رضي الله عنه قال قال النبي صلى الله عليه وسلم * كلمتان&quot;
+ &quot;~~حبيبتان إلى الرحمن خفيفتان على اللسان ثقيلتان في الميزان سبحان الله&quot;
+ &quot;~~وبحمده سبحان الله العظيم PageV06P2749 ms1979&quot;</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; load(OpenITIDB, 3)</code><code class="nohighlight hljs ansi" style="display:block;">54111-element Vector{String}:
+ &quot;######OpenITI#&quot;
+ &quot;#META# 001.AuthorNAME    ::  مسلم بن الحجاج أبو الحسن القشيري النيسابوري&quot;
+ &quot;#META# 002.AuthorSHORTNAME  ::  مسلم&quot;
+ &quot;#META# 003.AuthorSHORTNAMEtrans  ::  Muslim&quot;
+ &quot;#META# 004.AuthorBORN    ::  206&quot;
+ &quot;#META# 005.MULTIPLEBIRTHDATES: False&quot;
+ &quot;#META# 006.AuthorDIED    ::  261&quot;
+ &quot;#META# 007.MULTIPLEDEATHDATES  ::  False&quot;
+ &quot;#META# 008.LEGALSCHOOL  ::  الشافعي&quot;
+ &quot;#META# 009.LEGALSCHOOLtrans  ::  al-Shāfiʿī&quot;
+ ⋮
+ &quot;# (3033) حدثنا عمرو بن زرارة، حدثنا هشيم، عن أبي هاشم، عن أبي مجلز، عن&quot;
+ &quot;~~قيس بن عباد، قال: سمعت أبا ذر، يقسم قسما: إن {هذان خصمان اختصموا في&quot;
+ &quot;~~ربهم} [الحج: 19] «إنها نزلت في الذين برزوا يوم بدر، حمزة، وعلي، وعبيدة&quot;
+ &quot;~~بن الحارث، وعتبة، وشيبة ابنا ربيعة، والوليد بن عتبة»، PageV00P000&quot;
+ &quot;### \$ 34 -&quot;
+ &quot;# حدثنا أبو بكر بن أبي شيبة، حدثنا وكيع، ح وحدثني محمد بن المثنى، حدثنا&quot;
+ &quot;~~عبد الرحمن، جميعا عن سفيان، عن أبي هاشم، عن أبي مجلز، عن قيس بن عباد،&quot;
+ &quot;~~قال: سمعت أبا ذر يقسم لنزلت: {هذان خصمان} [الحج: 19] بمثل حديث هشيم&quot;
+ &quot;~~PageV00P000 ms1663&quot;</code></pre><h2 id="Delete-OpenITI-Local-DB-folder"><a class="docs-heading-anchor" href="#Delete-OpenITI-Local-DB-folder">Delete OpenITI Local DB folder</a><a id="Delete-OpenITI-Local-DB-folder-1"></a><a class="docs-heading-anchor-permalink" href="#Delete-OpenITI-Local-DB-folder" title="Permalink"></a></h2><p>To delete local DB folder, simply run the following:</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; delete!(OpenITIDB)</code><code class="nohighlight hljs ansi" style="display:block;">[ Info: DB successfully deleted.</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../">« Home</a><a class="docs-footer-nextpage" href="../metadata/">MetaData »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.19 on <span class="colophon-date" title="Sunday 19 June 2022 07:38">Sunday 19 June 2022</span>. Using Julia version 1.7.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

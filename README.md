@@ -4,6 +4,7 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/alstat/Kitab.jl/blob/master/LICENSE)
 [![](https://img.shields.io/badge/docs-dev-blue.svg)](https://alstat.github.io/Kitab.jl/dev/)
 [![](https://img.shields.io/badge/docs-stable-blue.svg)](https://alstat.github.io/Kitab.jl/stable/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6665710.svg)](https://doi.org/10.5281/zenodo.6665710)
 
 Kitab.jl is an interface to the [Open Islamic Texts Initiative (OpenITI)](https://openiti.org/) data. The OpenITI is a multi-institutional effort led by researchers at the [Aga Khan University’s Institute for the Study of Muslim Civilisations](https://www.aku.edu/ismc/Pages/home.aspx) in London, [Roshan Institute for Persian Studies at the University of Maryland](https://sllc.umd.edu/fields/persian#:~:text=Roshan%20Institute%20for%20Persian%20Studies%20has%20played%20a%20leading%20role,in%20the%20D.C.%20metro%20area.), College Park, and [Universität Hamburg](https://www.uni-hamburg.de/en.html) that aims to develop the digital infrastructure for the study of Islamicate cultures. 
 
@@ -22,4 +23,19 @@ To install the package, run the following:
 ```julia
 julia> using Pkg
 julia> Pkg.add("Kitab")
+```
+
+## Citation
+```
+@software{al_ahmadgaid_b_asaad_2022_6665710,
+  author       = {Al-Ahmadgaid B. Asaad},
+  title        = {{Kitab.jl: A Julia interface to the Open Islamic 
+                   Texts Initiative (OpenITI) data}},
+  month        = jun,
+  year         = 2022,
+  publisher    = {Zenodo},
+  version      = {v0.2.1},
+  doi          = {10.5281/zenodo.6665710},
+  url          = {https://doi.org/10.5281/zenodo.6665710}
+}
 ```

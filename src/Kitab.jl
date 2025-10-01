@@ -1,5 +1,5 @@
 module Kitab
-using HTTP
+using Downloads
 
 include("datasets.jl")
 include("utils.jl")

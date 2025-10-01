@@ -1,14 +1,14 @@
 name = "Kitab"
 uuid = "56988f64-bbe1-4670-be0e-9b8570beea21"
 authors = ["Al-Ahmadgaid B. Asaad"]
-version = "0.2.1"
+version = "0.2.2"
 
 [deps]
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
-HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+Downloads = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [compat]
-DataFrames = "1.3.4"
-HTTP = "0.9.17"
-julia = "1.6.6"
+DataFrames = "1.8.0"
+Downloads = "1.6.0"
+julia = "1.11"

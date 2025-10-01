@@ -54,10 +54,10 @@ end
 Download the OpenITI data.
 """
 function Base.get(::Type{OpenITIDB}, url::String)
-    download(OpenITIDB(url))
+    Downloads.download(OpenITIDB(url))
 end
 
-function Base.download(openiti::OpenITIDB)
+function Downloads.download(openiti::OpenITIDB)
     try
         mkdir(OPENITI_DB)
     catch end
@@ -78,7 +78,7 @@ function Base.download(openiti::OpenITIDB)
     if check_book(book_folder, version)
         @info "File $version already exists, no need to download. To force download, run delete!(OpenITIDB) to delete all the DB and download again."
     else
-        HTTP.download(openiti.url, file)
+        Downloads.download(openiti.url, file)
     end
 end
 
@@ -94,12 +94,12 @@ end
 Download multiple OpenITI books using multiple urls through `Array{String}`.
 """
 function Base.get(::Type{OpenITIDB}, url::Array{String})
-    download(OpenITIDB(url))
+    Downloads.download(OpenITIDB(url))
 end
 
-function Base.download(openitis::Array{OpenITIDB})
+function Downloads.download(openitis::Array{OpenITIDB})
     for openiti in openitis
-        download(openiti)
+        Downloads.download(openiti)
     end
 end
 

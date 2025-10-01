@@ -1,12 +1,15 @@
 using Documenter
 using Kitab
 
-makedocs(
+makedocs(;
     sitename = "Kitab.jl",
     format = Documenter.HTML(
-        assets = ["assets/favicon.ico"]
+        assets = ["assets/favicon.ico"],
+        repolink = "https://github.com/alstat/Kitab.jl"
     ),
     authors = "Al-Ahmadgaid B. Asaad",
+    repo = Remotes.GitHub("alstat", "Kitab.jl"),
+    remotes = nothing,
     modules = [Kitab],
     pages = [
         "Home" => "index.md",

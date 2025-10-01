@@ -34,7 +34,7 @@ To load the data from the list of downloaded OpenITI data, we simply specify the
 load(OpenITIDB, 1)
 load(OpenITIDB, 2)
 ```
-Another approach is to use broadcasting as follows:
+Another approach is to use broadcasting as follows :
 ```@repl abc
 b1, b2 = load.(OpenITIDB, [2, 3]);
 b1

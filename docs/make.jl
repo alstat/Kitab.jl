@@ -4,7 +4,7 @@ using Kitab
 makedocs(;
     sitename = "Kitab.jl",
     format = Documenter.HTML(
-        assets = ["assets/favicon.ico"],
+        assets = ["assets/favicon.ico", "assets/custom.css"],
         repolink = "https://github.com/alstat/Kitab.jl"
     ),
     authors = "Al-Ahmadgaid B. Asaad",
